@@ -44,8 +44,13 @@ class CRMLandingPage {
         <div class="container mx-auto px-6 relative z-10">
           <div class="grid md:grid-cols-2 gap-12 items-center">
             <div class="animate-fade-in">
-              <div class="inline-block bg-sky-500/20 px-4 py-2 rounded-full mb-6 border border-sky-500/30">
-                <span class="text-sm font-semibold text-sky-400"><i class="iconoir-star"></i> O CRM que acelera suas vendas</span>
+              <div class="flex gap-3 mb-6">
+                <div class="inline-block bg-sky-500/20 px-4 py-2 rounded-full border border-sky-500/30">
+                  <span class="text-sm font-semibold text-sky-400"><i class="iconoir-star"></i> O CRM que acelera suas vendas</span>
+                </div>
+                <div class="inline-block bg-green-500/20 px-4 py-2 rounded-full border border-green-500/30">
+                  <span class="text-sm font-semibold text-green-400"><i class="iconoir-check-circle"></i> Teste Grátis 14 Dias</span>
+                </div>
               </div>
               <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
                 Relacionamento com Clientes com <span class="bg-gradient-to-r from-sky-400 to-cyan-400 bg-clip-text text-transparent">Frappe CRM</span>
@@ -216,6 +221,260 @@ class CRMLandingPage {
                 <li><i class="iconoir-check text-sky-600 mr-2"></i>Faturamento recorrente</li>
               </ul>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-sky-600 to-cyan-600 bg-clip-text text-transparent">Times que Confiam na Avila Ops</h2>
+            <p class="text-xl text-gray-600">Veja o que nossos clientes dizem sobre o Frappe CRM</p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div class="bg-gradient-to-br from-sky-50 to-cyan-50 rounded-2xl p-8 border border-sky-100 hover:shadow-xl transition">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-gradient-to-r from-sky-600 to-cyan-600 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">LC</div>
+                <div>
+                  <h4 class="font-bold text-gray-800">Lucas Carvalho</h4>
+                  <p class="text-sm text-gray-600">Head de Vendas - VendasMax</p>
+                </div>
+              </div>
+              <div class="flex mb-3">
+                <i class="iconoir-star-solid text-yellow-500"></i>
+                <i class="iconoir-star-solid text-yellow-500"></i>
+                <i class="iconoir-star-solid text-yellow-500"></i>
+                <i class="iconoir-star-solid text-yellow-500"></i>
+                <i class="iconoir-star-solid text-yellow-500"></i>
+              </div>
+              <p class="text-gray-700 italic">“Aumentamos 45% nas conversões em 3 meses! O CRM é incrivelmente intuitivo. Nossa equipe adotou em 1 semana. A Avila Ops entregou exatamente o que prometeu.”</p>
+            </div>
+            <div class="bg-gradient-to-br from-sky-50 to-cyan-50 rounded-2xl p-8 border border-sky-100 hover:shadow-xl transition">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-gradient-to-r from-sky-600 to-cyan-600 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">FO</div>
+                <div>
+                  <h4 class="font-bold text-gray-800">Fernanda Oliveira</h4>
+                  <p class="text-sm text-gray-600">Gerente Comercial - TechSales</p>
+                </div>
+              </div>
+              <div class="flex mb-3">
+                <i class="iconoir-star-solid text-yellow-500"></i>
+                <i class="iconoir-star-solid text-yellow-500"></i>
+                <i class="iconoir-star-solid text-yellow-500"></i>
+                <i class="iconoir-star-solid text-yellow-500"></i>
+                <i class="iconoir-star-solid text-yellow-500"></i>
+              </div>
+              <p class="text-gray-700 italic">“Finalmente um CRM que não custa uma fortuna! Migração rápida do HubSpot. Está rodando perfeitamente há 6 meses. Economia de R$ 3.500/mês!”</p>
+            </div>
+            <div class="bg-gradient-to-br from-sky-50 to-cyan-50 rounded-2xl p-8 border border-sky-100 hover:shadow-xl transition">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-gradient-to-r from-sky-600 to-cyan-600 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">PM</div>
+                <div>
+                  <h4 class="font-bold text-gray-800">Pedro Martins</h4>
+                  <p class="text-sm text-gray-600">CEO - ProVendas</p>
+                </div>
+              </div>
+              <div class="flex mb-3">
+                <i class="iconoir-star-solid text-yellow-500"></i>
+                <i class="iconoir-star-solid text-yellow-500"></i>
+                <i class="iconoir-star-solid text-yellow-500"></i>
+                <i class="iconoir-star-solid text-yellow-500"></i>
+                <i class="iconoir-star-solid text-yellow-500"></i>
+              </div>
+              <p class="text-gray-700 italic">“Automações que economizam 15h/semana da equipe. Dashboards muito melhores que Salesforce. Suporte rápido e sempre disponível. Vale cada centavo!”</p>
+            </div>
+          </div>
+          <div class="text-center mt-12">
+            <div class="inline-flex items-center gap-8 bg-gray-50 px-8 py-4 rounded-full">
+              <div class="text-center">
+                <p class="text-3xl font-bold text-sky-600">200+</p>
+                <p class="text-sm text-gray-600">Times de Vendas</p>
+              </div>
+              <div class="h-12 w-px bg-gray-300"></div>
+              <div class="text-center">
+                <p class="text-3xl font-bold text-sky-600">45%</p>
+                <p class="text-sm text-gray-600">Aumento Médio</p>
+              </div>
+              <div class="h-12 w-px bg-gray-300"></div>
+              <div class="text-center">
+                <p class="text-3xl font-bold text-sky-600">99%</p>
+                <p class="text-sm text-gray-600">Satisfação</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-20 bg-gradient-to-br from-gray-50 to-sky-50">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-sky-600 to-cyan-600 bg-clip-text text-transparent">Do Início ao Sucesso em 5 Passos</h2>
+            <p class="text-xl text-gray-600">Nossa metodologia comprovada para implementação de CRM</p>
+          </div>
+          <div class="max-w-5xl mx-auto">
+            <div class="relative">
+              <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-sky-600 to-cyan-600 hidden md:block"></div>
+              
+              <div class="mb-12 md:flex items-center">
+                <div class="md:w-1/2 md:pr-12 mb-4 md:mb-0 md:text-right">
+                  <div class="bg-white rounded-xl p-6 shadow-lg inline-block">
+                    <h3 class="text-2xl font-bold text-sky-600 mb-2">1. Discovery Call</h3>
+                    <p class="text-gray-600 mb-2">Entendemos seu processo de vendas e dores</p>
+                    <p class="text-sm text-gray-500">📞 30 minutos • Sem compromisso</p>
+                  </div>
+                </div>
+                <div class="md:w-12 flex justify-center">
+                  <div class="w-12 h-12 bg-gradient-to-r from-sky-600 to-cyan-600 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">1</div>
+                </div>
+                <div class="md:w-1/2 md:pl-12"></div>
+              </div>
+
+              <div class="mb-12 md:flex items-center flex-row-reverse">
+                <div class="md:w-1/2 md:pl-12 mb-4 md:mb-0">
+                  <div class="bg-white rounded-xl p-6 shadow-lg inline-block">
+                    <h3 class="text-2xl font-bold text-sky-600 mb-2">2. Demo Personalizada</h3>
+                    <p class="text-gray-600 mb-2">Mostramos o CRM configurado para seu negócio</p>
+                    <p class="text-sm text-gray-500">📱 Ao vivo • Com seus dados reais</p>
+                  </div>
+                </div>
+                <div class="md:w-12 flex justify-center">
+                  <div class="w-12 h-12 bg-gradient-to-r from-sky-600 to-cyan-600 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">2</div>
+                </div>
+                <div class="md:w-1/2 md:pr-12"></div>
+              </div>
+
+              <div class="mb-12 md:flex items-center">
+                <div class="md:w-1/2 md:pr-12 mb-4 md:mb-0 md:text-right">
+                  <div class="bg-white rounded-xl p-6 shadow-lg inline-block">
+                    <h3 class="text-2xl font-bold text-sky-600 mb-2">3. Setup em 1 Semana</h3>
+                    <p class="text-gray-600 mb-2">Configuração, customizações e integrações</p>
+                    <p class="text-sm text-gray-500">⚡ Migração inclusa • Workflows prontos</p>
+                  </div>
+                </div>
+                <div class="md:w-12 flex justify-center">
+                  <div class="w-12 h-12 bg-gradient-to-r from-sky-600 to-cyan-600 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">3</div>
+                </div>
+                <div class="md:w-1/2 md:pl-12"></div>
+              </div>
+
+              <div class="mb-12 md:flex items-center flex-row-reverse">
+                <div class="md:w-1/2 md:pl-12 mb-4 md:mb-0">
+                  <div class="bg-white rounded-xl p-6 shadow-lg inline-block">
+                    <h3 class="text-2xl font-bold text-sky-600 mb-2">4. Onboarding do Time</h3>
+                    <p class="text-gray-600 mb-2">Treinamento completo para toda equipe</p>
+                    <p class="text-sm text-gray-500">🎯 Vídeos + Prática • Certificação</p>
+                  </div>
+                </div>
+                <div class="md:w-12 flex justify-center">
+                  <div class="w-12 h-12 bg-gradient-to-r from-sky-600 to-cyan-600 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">4</div>
+                </div>
+                <div class="md:w-1/2 md:pr-12"></div>
+              </div>
+
+              <div class="md:flex items-center">
+                <div class="md:w-1/2 md:pr-12 mb-4 md:mb-0 md:text-right">
+                  <div class="bg-gradient-to-r from-sky-600 to-cyan-600 rounded-xl p-6 shadow-lg inline-block text-white">
+                    <h3 class="text-2xl font-bold mb-2">5. Vendendo Mais!</h3>
+                    <p class="mb-2">Sistema em produção, vendas aumentando</p>
+                    <p class="text-sm text-sky-100">🚀 Suporte contínuo • Otimizações mensais</p>
+                  </div>
+                </div>
+                <div class="md:w-12 flex justify-center">
+                  <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">✓</div>
+                </div>
+                <div class="md:w-1/2 md:pl-12"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-sky-600 to-cyan-600 bg-clip-text text-transparent">Perguntas Frequentes</h2>
+            <p class="text-xl text-gray-600">Tudo sobre Frappe CRM e nossa implementação</p>
+          </div>
+          <div class="max-w-4xl mx-auto space-y-4">
+            <details class="bg-gradient-to-br from-sky-50 to-cyan-50 rounded-xl p-6 border border-sky-100 group">
+              <summary class="font-bold text-lg text-gray-800 cursor-pointer flex justify-between items-center">
+                <span>⏱️ Quanto tempo para começar a usar?</span>
+                <i class="iconoir-nav-arrow-down group-open:rotate-180 transition"></i>
+              </summary>
+              <p class="mt-4 text-gray-600">Você pode começar em 1 semana! Fazemos setup, migração de contatos, customizações básicas e treinamento inicial. Empresas maiores com integrações complexas podem levar 2-3 semanas.</p>
+            </details>
+
+            <details class="bg-gradient-to-br from-sky-50 to-cyan-50 rounded-xl p-6 border border-sky-100 group">
+              <summary class="font-bold text-lg text-gray-800 cursor-pointer flex justify-between items-center">
+                <span>💾 Posso migrar do Salesforce/HubSpot/RD Station?</span>
+                <i class="iconoir-nav-arrow-down group-open:rotate-180 transition"></i>
+              </summary>
+              <p class="mt-4 text-gray-600">Sim! Fazemos migração de qualquer CRM: Salesforce, HubSpot, RD Station, Pipedrive, Zoho, planilhas Excel. Importamos contatos, deals, histórico de interações e atividades sem perda de dados.</p>
+            </details>
+
+            <details class="bg-gradient-to-br from-sky-50 to-cyan-50 rounded-xl p-6 border border-sky-100 group">
+              <summary class="font-bold text-lg text-gray-800 cursor-pointer flex justify-between items-center">
+                <span>🆓 Tem período de teste?</span>
+                <i class="iconoir-nav-arrow-down group-open:rotate-180 transition"></i>
+              </summary>
+              <p class="mt-4 text-gray-600">Sim! 14 dias grátis com acesso completo. Podemos importar seus dados reais de teste, configurar pipelines e workflows. Nossa equipe te acompanha no trial para você aproveitar ao máximo.</p>
+            </details>
+
+            <details class="bg-gradient-to-br from-sky-50 to-cyan-50 rounded-xl p-6 border border-sky-100 group">
+              <summary class="font-bold text-lg text-gray-800 cursor-pointer flex justify-between items-center">
+                <span>💰 Quanto custa a implementação?</span>
+                <i class="iconoir-nav-arrow-down group-open:rotate-180 transition"></i>
+              </summary>
+              <p class="mt-4 text-gray-600">A partir de R$ 3.500 para setup básico (configuração, importação de dados, treinamento). Mensalidade começa em R$ 699/mês. É até 70% mais barato que Salesforce/HubSpot com funcionalidades equivalentes!</p>
+            </details>
+
+            <details class="bg-gradient-to-br from-sky-50 to-cyan-50 rounded-xl p-6 border border-sky-100 group">
+              <summary class="font-bold text-lg text-gray-800 cursor-pointer flex justify-between items-center">
+                <span>👥 Quantos usuários posso ter?</span>
+                <i class="iconoir-nav-arrow-down group-open:rotate-180 transition"></i>
+              </summary>
+              <p class="mt-4 text-gray-600">Usuários ilimitados! Sendo open source, você pode adicionar quantos vendedores, gerentes e atendentes precisar, sem custo adicional por usuário. Pagamento é apenas pelo suporte e infraestrutura.</p>
+            </details>
+
+            <details class="bg-gradient-to-br from-sky-50 to-cyan-50 rounded-xl p-6 border border-sky-100 group">
+              <summary class="font-bold text-lg text-gray-800 cursor-pointer flex justify-between items-center">
+                <span>🔌 Integra com WhatsApp/Email/Telefone?</span>
+                <i class="iconoir-nav-arrow-down group-open:rotate-180 transition"></i>
+              </summary>
+              <p class="mt-4 text-gray-600">Sim! Integra com WhatsApp Business API, Gmail, Outlook, telefonia (discador), Calendly, Stripe, Mercado Pago e mais. Todas as comunicações ficam registradas automaticamente no histórico do lead/cliente.</p>
+            </details>
+
+            <details class="bg-gradient-to-br from-sky-50 to-cyan-50 rounded-xl p-6 border border-sky-100 group">
+              <summary class="font-bold text-lg text-gray-800 cursor-pointer flex justify-between items-center">
+                <span>📊 Tem relatórios e dashboards?</span>
+                <i class="iconoir-nav-arrow-down group-open:rotate-180 transition"></i>
+              </summary>
+              <p class="mt-4 text-gray-600">Dashboards completos em tempo real: funil de vendas, performance por vendedor, previsão de receita, taxa de conversão, ciclo de vendas e muito mais. Você pode criar relatórios personalizados sem programação.</p>
+            </details>
+
+            <details class="bg-gradient-to-br from-sky-50 to-cyan-50 rounded-xl p-6 border border-sky-100 group">
+              <summary class="font-bold text-lg text-gray-800 cursor-pointer flex justify-between items-center">
+                <span>⚙️ Posso automatizar tarefas?</span>
+                <i class="iconoir-nav-arrow-down group-open:rotate-180 transition"></i>
+              </summary>
+              <p class="mt-4 text-gray-600">Totalmente! Crie automações como: envio automático de emails, atribuição de leads por território, follow-ups agendados, notificações de WhatsApp, scores de leads, webhooks e integrações via API.</p>
+            </details>
+
+            <details class="bg-gradient-to-br from-sky-50 to-cyan-50 rounded-xl p-6 border border-sky-100 group">
+              <summary class="font-bold text-lg text-gray-800 cursor-pointer flex justify-between items-center">
+                <span>📱 Funciona no celular?</span>
+                <i class="iconoir-nav-arrow-down group-open:rotate-180 transition"></i>
+              </summary>
+              <p class="mt-4 text-gray-600">100% mobile! Interface responsiva perfeita para celular e tablet. Seus vendedores podem atualizar deals, fazer follow-ups, acessar contatos e ver dashboards de qualquer lugar.</p>
+            </details>
+
+            <details class="bg-gradient-to-br from-sky-50 to-cyan-50 rounded-xl p-6 border border-sky-100 group">
+              <summary class="font-bold text-lg text-gray-800 cursor-pointer flex justify-between items-center">
+                <span>❌ Posso cancelar quando quiser?</span>
+                <i class="iconoir-nav-arrow-down group-open:rotate-180 transition"></i>
+              </summary>
+              <p class="mt-4 text-gray-600">Sim! Sem fidelidade. Cancele com 30 dias de aviso. Exportamos todos os seus dados (contatos, deals, histórico) em formato aberto (CSV, JSON) para você levar para onde quiser.</p>
+            </details>
           </div>
         </div>
       </section>
