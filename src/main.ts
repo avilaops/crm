@@ -1,10 +1,19 @@
 import './style.css';
 
+// Declarações de tipo para tracking
+declare global {
+  interface Window {
+    fbq: (action: string, event: string, params?: any) => void;
+    gtag: (...args: any[]) => void;
+  }
+}
+
 class CRMLandingPage {
   private app: HTMLElement;
   constructor() {
     this.app = document.querySelector('#app')!;
     this.render();
+    this.setupTracking();
   }
 
   private render(): void {
@@ -543,6 +552,62 @@ class CRMLandingPage {
         e.preventDefault();
         const target = document.querySelector((anchor as HTMLAnchorElement).getAttribute('href')!);
         if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  }
+
+  private setupTracking(): void {
+    // Tracking para links do Mercado Pago (Conversão)
+    document.querySelectorAll('a[href*="mpago.la"]').forEach(link => {
+      link.addEventListener('click', () => {
+        if (typeof window.fbq !== 'undefined') {
+          window.fbq('track', 'InitiateCheckout', {
+            content_name: 'Frappe CRM Plan',
+            currency: 'BRL'
+          });
+        }
+        if (typeof window.gtag !== 'undefined') {
+          window.gtag('event', 'begin_checkout', {
+            currency: 'BRL',
+            items: [{
+              item_name: 'Frappe CRM Subscription'
+            }]
+          });
+        }
+      });
+    });
+
+    // Tracking para links do WhatsApp (Lead)
+    document.querySelectorAll('a[href*="wa.me"], button[onclick*="wa.me"]').forEach(link => {
+      link.addEventListener('click', () => {
+        if (typeof window.fbq !== 'undefined') {
+          window.fbq('track', 'Contact', {
+            content_name: 'Frappe CRM WhatsApp Contact'
+          });
+        }
+        if (typeof window.gtag !== 'undefined') {
+          window.gtag('event', 'generate_lead', {
+            event_category: 'engagement',
+            event_label: 'WhatsApp Contact'
+          });
+        }
+      });
+    });
+
+    // Tracking para formulários
+    document.querySelectorAll('form').forEach(form => {
+      form.addEventListener('submit', () => {
+        if (typeof window.fbq !== 'undefined') {
+          window.fbq('track', 'SubmitApplication', {
+            content_name: 'Frappe CRM Demo Request'
+          });
+        }
+        if (typeof window.gtag !== 'undefined') {
+          window.gtag('event', 'form_submit', {
+            event_category: 'engagement',
+            event_label: 'Demo Request'
+          });
+        }
       });
     });
   }
