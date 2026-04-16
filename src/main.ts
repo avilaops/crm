@@ -337,7 +337,7 @@ class CRMLandingPage {
             </div>
 
             <div class="bg-gradient-to-br from-sky-600 to-cyan-600 rounded-2xl p-8 relative transform scale-105 shadow-2xl text-white">
-              <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-orange-500 text-white px-6 py-2 rounded-full text-sm font-bold">
+              <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-orange-600 text-white px-6 py-2 rounded-full text-sm font-bold">
                 Mais Popular
               </div>
               <h3 class="text-2xl font-bold mb-2">Professional</h3>
@@ -498,10 +498,10 @@ class CRMLandingPage {
               </div>
               <p class="text-gray-400">Especialistas em Frappe CRM e soluções de relacionamento com clientes</p>
               <div class="mt-4 flex space-x-4">
-                <a href="https://instagram.com/avilaopss" target="_blank" class="text-gray-400 hover:text-sky-400 transition">
+                <a href="https://instagram.com/avilaopss" target="_blank" class="text-gray-400 hover:text-sky-400 transition" aria-label="Siga-nos no Instagram">
                   <i class="iconoir-instagram text-2xl"></i>
                 </a>
-                <a href="https://www.linkedin.com/company/avilaops" target="_blank" class="text-gray-400 hover:text-sky-400 transition">
+                <a href="https://www.linkedin.com/company/avilaops" target="_blank" class="text-gray-400 hover:text-sky-400 transition" aria-label="Conecte-se no LinkedIn">
                   <i class="iconoir-linkedin text-2xl"></i>
                 </a>
               </div>
