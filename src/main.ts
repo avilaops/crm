@@ -470,10 +470,10 @@ class CRMLandingPage {
               Agende uma demonstração gratuita e veja o Frappe CRM em ação
             </p>
             <form class="max-w-md mx-auto space-y-4" onsubmit="event.preventDefault(); window.open('https://wa.me/5517997811471?text=' + encodeURIComponent('Olá! Gostaria de uma demonstração do Frappe CRM'), '_blank');">
-              <input type="text" placeholder="Seu nome" class="w-full px-6 py-4 rounded-full border-2 border-gray-700 bg-gray-800 text-white focus:border-sky-500 outline-none transition">
-              <input type="email" placeholder="Seu email corporativo" class="w-full px-6 py-4 rounded-full border-2 border-gray-700 bg-gray-800 text-white focus:border-sky-500 outline-none transition">
-              <input type="tel" placeholder="Telefone / WhatsApp" class="w-full px-6 py-4 rounded-full border-2 border-gray-700 bg-gray-800 text-white focus:border-sky-500 outline-none transition">
-              <select class="w-full px-6 py-4 rounded-full border-2 border-gray-700 bg-gray-800 text-white focus:border-sky-500 outline-none transition">
+              <input type="text" placeholder="Seu nome" aria-label="Seu nome" class="w-full px-6 py-4 rounded-full border-2 border-gray-700 bg-gray-800 text-white focus:border-sky-500 outline-none transition">
+              <input type="email" placeholder="Seu email corporativo" aria-label="Seu email corporativo" class="w-full px-6 py-4 rounded-full border-2 border-gray-700 bg-gray-800 text-white focus:border-sky-500 outline-none transition">
+              <input type="tel" placeholder="Telefone / WhatsApp" aria-label="Telefone ou WhatsApp" class="w-full px-6 py-4 rounded-full border-2 border-gray-700 bg-gray-800 text-white focus:border-sky-500 outline-none transition">
+              <select aria-label="Tamanho da equipe de vendas" class="w-full px-6 py-4 rounded-full border-2 border-gray-700 bg-gray-800 text-white focus:border-sky-500 outline-none transition">
                 <option>Tamanho da equipe de vendas</option>
                 <option>1-5 pessoas</option>
                 <option>6-15 pessoas</option>
