@@ -1,652 +1,551 @@
 import './style.css';
 
-interface Feature {
-  icon: string;
-  title: string;
-  description: string;
-}
-
-interface Benefit {
-  title: string;
-  description: string;
-  stat: string;
-}
-
-interface UseCase {
-  industry: string;
-  challenge: string;
-  solution: string;
-}
-
 class CRMLandingPage {
   private app: HTMLElement;
-
   constructor() {
     this.app = document.querySelector('#app')!;
     this.render();
   }
 
-  private createHeader(): string {
-    return `
+  private render(): void {
+    this.app.innerHTML = `
       <header class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-sm z-50">
         <nav class="container mx-auto px-6 py-4">
           <div class="flex items-center justify-between">
             <div class="flex items-center space-x-2">
-              <svg class="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-              </svg>
-              <span class="text-2xl font-bold gradient-text">Avila Ops</span>
+              <i class="iconoir-user-circle text-3xl text-sky-600"></i>
+              <span class="text-2xl font-bold bg-gradient-to-r from-sky-600 to-cyan-600 bg-clip-text text-transparent">Avila Ops CRM</span>
             </div>
             <div class="hidden md:flex items-center space-x-8">
-              <a href="#features" class="text-gray-700 hover:text-green-600 transition">Recursos</a>
-              <a href="#benefits" class="text-gray-700 hover:text-green-600 transition">Benefícios</a>
-              <a href="#usecases" class="text-gray-700 hover:text-green-600 transition">Casos de Uso</a>
-              <a href="#pricing" class="text-gray-700 hover:text-green-600 transition">Preços</a>
-              <button class="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition transform hover:scale-105">
-                Testar Grátis
+              <a href="#features" class="text-gray-700 hover:text-sky-600 transition">Recursos</a>
+              <a href="#benefits" class="text-gray-700 hover:text-sky-600 transition">Benefícios</a>
+              <a href="#use-cases" class="text-gray-700 hover:text-sky-600 transition">Casos de Uso</a>
+              <a href="#testimonials" class="text-gray-700 hover:text-sky-600 transition">Depoimentos</a>
+              <a href="#pricing" class="text-gray-700 hover:text-sky-600 transition">Preços</a>
+              <button onclick="window.open('https://wa.me/5517997811471?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Frappe%20CRM', '_blank')" class="bg-gradient-to-r from-sky-600 to-cyan-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition transform hover:scale-105">
+                Solicitar Demo
               </button>
             </div>
           </div>
         </nav>
       </header>
-    `;
-  }
 
-  private createHero(): string {
-    return `
-      <section class="pt-32 pb-20 gradient-bg text-white">
-        <div class="container mx-auto px-6">
+      <section class="pt-32 pb-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#444_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="container mx-auto px-6 relative z-10">
           <div class="grid md:grid-cols-2 gap-12 items-center">
             <div class="animate-fade-in">
-              <div class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-                <span class="text-sm font-semibold">🚀 O CRM que sua equipe vai adorar</span>
+              <div class="inline-block bg-sky-500/20 px-4 py-2 rounded-full mb-6 border border-sky-500/30">
+                <span class="text-sm font-semibold text-sky-400"><i class="iconoir-star"></i> O CRM que acelera suas vendas</span>
               </div>
               <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                Relacionamentos que <span class="text-yellow-300">Convertem</span> em Vendas
+                Relacionamento com Clientes com <span class="bg-gradient-to-r from-sky-400 to-cyan-400 bg-clip-text text-transparent">Frappe CRM</span>
               </h1>
-              <p class="text-xl mb-8 text-gray-100">
-                Frappe CRM moderno, intuitivo e poderoso. A Avila Ops cuida da implantação, 
-                treinamento e suporte para que você foque no que importa: vender mais.
+              <p class="text-xl mb-8 text-gray-300">
+                A Avila Ops oferece implantação completa, treinamento especializado e suporte dedicado para Frappe CRM, a plataforma open source mais moderna para gestão de relacionamento com clientes.
               </p>
               <div class="flex flex-col sm:flex-row gap-4">
-                <button class="bg-white text-green-600 px-8 py-4 rounded-full font-semibold hover:shadow-2xl transition transform hover:scale-105">
-                  Começar Teste Gratuito
-                </button>
-                <button class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-green-600 transition">
-                  Agendar Demo
+                <a href="https://wa.me/5517997811471?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Frappe%20CRM" target="_blank" class="bg-gradient-to-r from-sky-600 to-cyan-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-2xl transition transform hover:scale-105 text-center">
+                  <i class="iconoir-phone mr-2"></i>Agendar Demonstração Gratuita
+                </a>
+                <button class="border-2 border-sky-400 text-sky-400 px-8 py-4 rounded-full font-semibold hover:bg-sky-400 hover:text-white transition">
+                  <i class="iconoir-play mr-2"></i>Ver Demo ao Vivo
                 </button>
               </div>
               <div class="mt-8 grid grid-cols-3 gap-6">
-                <div>
-                  <div class="text-3xl font-bold">97%</div>
-                  <div class="text-sm text-gray-100">Taxa de adoção</div>
-                </div>
-                <div>
-                  <div class="text-3xl font-bold">2.5x</div>
-                  <div class="text-sm text-gray-100">Mais conversões</div>
-                </div>
-                <div>
-                  <div class="text-3xl font-bold">45min</div>
-                  <div class="text-sm text-gray-100">Setup inicial</div>
-                </div>
-              </div>
-            </div>
-            <div class="hidden md:block animate-slide-up">
-              <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%2310b981' width='400' height='300' rx='10'/%3E%3Crect fill='%23fff' x='20' y='20' width='360' height='50' rx='8' opacity='0.9'/%3E%3Crect fill='%23fff' x='20' y='85' width='110' height='195' rx='8' opacity='0.8'/%3E%3Crect fill='%23fff' x='145' y='85' width='235' height='60' rx='8' opacity='0.8'/%3E%3Crect fill='%23fff' x='145' y='155' width='235' height='125' rx='8' opacity='0.8'/%3E%3Ccircle cx='50' cy='45' r='12' fill='%2310b981'/%3E%3Ccircle cx='350' cy='45' r='12' fill='%23fbbf24'/%3E%3C/svg%3E" alt="Frappe CRM Dashboard" class="rounded-2xl shadow-2xl">
+                <div><div class="text-3xl font-bold text-sky-400">+50</div><div class="text-sm text-gray-400">Empresas</div></div>
+                <div><div class="text-3xl font-bold text-sky-400">+60%</div><div class="text-sm text-gray-400">Conversão</div></div>
+                <div><div class="text-3xl font-bold text-sky-400">24/7</div><div class="text-sm text-gray-400">Suporte</div></div>
               </div>
             </div>
           </div>
         </div>
       </section>
-    `;
-  }
 
-  private createFeatures(): string {
-    const features: Feature[] = [
-      {
-        icon: '📊',
-        title: 'Pipeline Visual',
-        description: 'Visualize seu funil de vendas com drag & drop intuitivo e atualizações em tempo real'
-      },
-      {
-        icon: '🎯',
-        title: 'Lead Scoring Automático',
-        description: 'IA identifica os leads mais promissores para sua equipe focar'
-      },
-      {
-        icon: '📧',
-        title: 'Email Integrado',
-        description: 'Todo histórico de comunicação centralizado, com templates e automação'
-      },
-      {
-        icon: '📱',
-        title: 'Mobile First',
-        description: 'App nativo para iOS e Android, trabalhe de qualquer lugar'
-      },
-      {
-        icon: '🤖',
-        title: 'Automação Inteligente',
-        description: 'Workflows customizados que economizam horas da sua equipe'
-      },
-      {
-        icon: '📈',
-        title: 'Relatórios em Tempo Real',
-        description: 'Dashboards personalizados com métricas que importam para você'
-      }
-    ];
-
-    return `
       <section id="features" class="py-20 bg-white">
         <div class="container mx-auto px-6">
           <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">Tudo que você precisa para vender mais</h2>
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-sky-600 to-cyan-600 bg-clip-text text-transparent">Recursos Poderosos para Seu Time de Vendas</h2>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-              Frappe CRM foi construído do zero para ser simples, rápido e poderoso
+              Tudo que você precisa para gerenciar leads, fechar negócios e encantar clientes
             </p>
           </div>
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            ${features.map(feature => `
-              <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 card-hover border border-green-100">
-                <div class="text-5xl mb-4">${feature.icon}</div>
-                <h3 class="text-2xl font-bold mb-3 text-gray-800">${feature.title}</h3>
-                <p class="text-gray-600 leading-relaxed">${feature.description}</p>
-              </div>
-            `).join('')}
+            <div class="bg-gradient-to-br from-gray-50 to-sky-50 rounded-2xl p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-sky-100">
+              <i class="iconoir-filter-list text-5xl text-sky-600 mb-4"></i>
+              <h3 class="text-2xl font-bold mb-3 text-gray-800">Pipeline Visual</h3>
+              <p class="text-gray-600">Visualize e gerencie seu funil de vendas com drag-and-drop intuitivo e acompanhamento em tempo real</p>
+            </div>
+            <div class="bg-gradient-to-br from-gray-50 to-sky-50 rounded-2xl p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-sky-100">
+              <i class="iconoir-message-text text-5xl text-sky-600 mb-4"></i>
+              <h3 class="text-2xl font-bold mb-3 text-gray-800">Comunicação Integrada</h3>
+              <p class="text-gray-600">Email, WhatsApp e chamadas integradas diretamente na plataforma com histórico completo</p>
+            </div>
+            <div class="bg-gradient-to-br from-gray-50 to-sky-50 rounded-2xl p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-sky-100">
+              <i class="iconoir-robot text-5xl text-sky-600 mb-4"></i>
+              <h3 class="text-2xl font-bold mb-3 text-gray-800">Automação Inteligente</h3>
+              <p class="text-gray-600">Workflows automáticos para qualificação de leads, follow-ups e tarefas repetitivas</p>
+            </div>
+            <div class="bg-gradient-to-br from-gray-50 to-sky-50 rounded-2xl p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-sky-100">
+              <i class="iconoir-graph-up text-5xl text-sky-600 mb-4"></i>
+              <h3 class="text-2xl font-bold mb-3 text-gray-800">Analytics Avançado</h3>
+              <p class="text-gray-600">Dashboards completos com métricas de vendas, previsões e análise de performance</p>
+            </div>
+            <div class="bg-gradient-to-br from-gray-50 to-sky-50 rounded-2xl p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-sky-100">
+              <i class="iconoir-smartphone text-5xl text-sky-600 mb-4"></i>
+              <h3 class="text-2xl font-bold mb-3 text-gray-800">Mobile First</h3>
+              <p class="text-gray-600">Acesse e gerencie seus leads de qualquer lugar com interface mobile otimizada</p>
+            </div>
+            <div class="bg-gradient-to-br from-gray-50 to-sky-50 rounded-2xl p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-sky-100">
+              <i class="iconoir-plug text-5xl text-sky-600 mb-4"></i>
+              <h3 class="text-2xl font-bold mb-3 text-gray-800">Integrações</h3>
+              <p class="text-gray-600">Conecte com WhatsApp, email marketing, ERPs e mais de 100 outras ferramentas</p>
+            </div>
           </div>
         </div>
       </section>
-    `;
-  }
 
-  private createBenefits(): string {
-    const benefits: Benefit[] = [
-      {
-        title: 'Adoção da Equipe',
-        description: 'Interface tão simples que sua equipe adota naturalmente',
-        stat: '97%'
-      },
-      {
-        title: 'Aumento de Conversões',
-        description: 'Não perca mais oportunidades por falta de follow-up',
-        stat: '+150%'
-      },
-      {
-        title: 'Tempo Economizado',
-        description: 'Automações que economizam 10+ horas/semana por vendedor',
-        stat: '10h/sem'
-      },
-      {
-        title: 'ROI Rápido',
-        description: 'Retorno sobre investimento em menos de 3 meses',
-        stat: '<3 meses'
-      }
-    ];
-
-    return `
-      <section id="benefits" class="py-20 bg-gradient-to-br from-green-50 to-emerald-50">
+      <section id="benefits" class="py-20 bg-gradient-to-br from-sky-50 to-cyan-50">
         <div class="container mx-auto px-6">
           <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">Resultados Mensuráveis</h2>
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-sky-600 to-cyan-600 bg-clip-text text-transparent">Resultados Comprovados</h2>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-              Veja o impacto real do Frappe CRM no seu processo de vendas
+              Empresas que usam Frappe CRM com suporte Avila Ops veem impacto real nos resultados
             </p>
           </div>
           <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            ${benefits.map(benefit => `
-              <div class="bg-white rounded-2xl p-8 text-center card-hover shadow-lg">
-                <div class="text-6xl font-bold gradient-text mb-4">${benefit.stat}</div>
-                <h3 class="text-2xl font-bold mb-3 text-gray-800">${benefit.title}</h3>
-                <p class="text-gray-600">${benefit.description}</p>
-              </div>
-            `).join('')}
-          </div>
-          
-          <div class="mt-16 bg-white rounded-3xl p-12 shadow-xl">
-            <div class="text-center mb-8">
-              <h3 class="text-3xl font-bold mb-4 text-gray-800">Por que a Avila Ops?</h3>
-              <p class="text-lg text-gray-600">Somos parceiros certificados Frappe com experiência comprovada</p>
+            <div class="bg-white rounded-2xl p-8 text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+              <div class="text-6xl font-bold bg-gradient-to-r from-sky-600 to-cyan-600 bg-clip-text text-transparent mb-4">+60%</div>
+              <h3 class="text-2xl font-bold mb-3 text-gray-800">Mais Conversões</h3>
+              <p class="text-gray-600">Aumento médio na taxa de fechamento</p>
             </div>
-            <div class="grid md:grid-cols-3 gap-8">
-              <div class="text-center">
-                <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg class="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
-                    <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/>
-                  </svg>
-                </div>
-                <h4 class="text-xl font-bold mb-2">Implantação Express</h4>
-                <p class="text-gray-600">Seu CRM pronto para usar em 1 semana</p>
-              </div>
-              <div class="text-center">
-                <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg class="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
-                  </svg>
-                </div>
-                <h4 class="text-xl font-bold mb-2">Treinamento Prático</h4>
-                <p class="text-gray-600">Sua equipe operando com confiança</p>
-              </div>
-              <div class="text-center">
-                <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg class="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-2 0c0 .993-.241 1.929-.668 2.754l-1.524-1.525a3.997 3.997 0 00.078-2.183l1.562-1.562C15.802 8.249 16 9.1 16 10zm-5.165 3.913l1.58 1.58A5.98 5.98 0 0110 16a5.976 5.976 0 01-2.516-.552l1.562-1.562a4.006 4.006 0 001.789.027zm-4.677-2.796a4.002 4.002 0 01-.041-2.08l-.08.08-1.53-1.533A5.98 5.98 0 004 10c0 .954.223 1.856.619 2.657l1.54-1.54zm1.088-6.45A5.974 5.974 0 0110 4c.954 0 1.856.223 2.657.619l-1.54 1.54a4.002 4.002 0 00-2.346.033L7.246 4.668zM12 10a2 2 0 11-4 0 2 2 0 014 0z" clip-rule="evenodd"/>
-                  </svg>
-                </div>
-                <h4 class="text-xl font-bold mb-2">Suporte Dedicado</h4>
-                <p class="text-gray-600">Time especializado sempre disponível</p>
-              </div>
+            <div class="bg-white rounded-2xl p-8 text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+              <div class="text-6xl font-bold bg-gradient-to-r from-sky-600 to-cyan-600 bg-clip-text text-transparent mb-4">-50%</div>
+              <h3 class="text-2xl font-bold mb-3 text-gray-800">Tempo de Resposta</h3>
+              <p class="text-gray-600">Redução no tempo de follow-up</p>
+            </div>
+            <div class="bg-white rounded-2xl p-8 text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+              <div class="text-6xl font-bold bg-gradient-to-r from-sky-600 to-cyan-600 bg-clip-text text-transparent mb-4">3x</div>
+              <h3 class="text-2xl font-bold mb-3 text-gray-800">Produtividade</h3>
+              <p class="text-gray-600">Mais leads gerenciados por vendedor</p>
+            </div>
+            <div class="bg-white rounded-2xl p-8 text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+              <div class="text-6xl font-bold bg-gradient-to-r from-sky-600 to-cyan-600 bg-clip-text text-transparent mb-4">80%</div>
+              <h3 class="text-2xl font-bold mb-3 text-gray-800">Economia</h3>
+              <p class="text-gray-600">Vs. CRMs proprietários tradicionais</p>
             </div>
           </div>
         </div>
       </section>
-    `;
-  }
 
-  private createUseCases(): string {
-    const useCases: UseCase[] = [
-      {
-        industry: '💼 B2B Services',
-        challenge: 'Ciclos de venda longos com múltiplos stakeholders',
-        solution: 'Pipeline estruturado com automação de follow-ups e gestão de relacionamentos'
-      },
-      {
-        industry: '🏢 SaaS & Tech',
-        challenge: 'Alto volume de leads com necessidade de qualificação rápida',
-        solution: 'Lead scoring automático e integração com ferramentas de marketing'
-      },
-      {
-        industry: '🏗️ Construção & Imóveis',
-        challenge: 'Projetos complexos exigindo documentação detalhada',
-        solution: 'Anexos ilimitados, histórico completo e gestão de propostas'
-      },
-      {
-        industry: '🎓 Educação & Consultorias',
-        challenge: 'Relacionamento contínuo com clientes recorrentes',
-        solution: 'Gestão de contas com renovações automáticas e upsell tracking'
-      },
-      {
-        industry: '💊 Healthcare & Farmacêutico',
-        challenge: 'Compliance e rastreabilidade de interações',
-        solution: 'Audit trail completo e campos customizados para regulamentações'
-      },
-      {
-        industry: '🛍️ Varejo & E-commerce',
-        challenge: 'Integração com múltiplos canais de venda',
-        solution: 'APIs abertas e integração nativa com ERPNext'
-      }
-    ];
-
-    return `
-      <section id="usecases" class="py-20 bg-white">
+      <section id="use-cases" class="py-20 bg-white">
         <div class="container mx-auto px-6">
           <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">Casos de Uso Reais</h2>
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-sky-600 to-cyan-600 bg-clip-text text-transparent">Perfeito para Seu Segmento</h2>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-              Frappe CRM se adapta às necessidades específicas do seu setor
+              Soluções customizadas para diferentes indústrias e modelos de negócio
             </p>
           </div>
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            ${useCases.map(useCase => `
-              <div class="bg-gray-50 rounded-xl p-6 card-hover border border-gray-200">
-                <h3 class="text-xl font-bold mb-3 text-gray-800">${useCase.industry}</h3>
-                <div class="mb-3">
-                  <span class="text-sm font-semibold text-red-600">Desafio:</span>
-                  <p class="text-sm text-gray-600 mt-1">${useCase.challenge}</p>
-                </div>
-                <div>
-                  <span class="text-sm font-semibold text-green-600">Solução:</span>
-                  <p class="text-sm text-gray-600 mt-1">${useCase.solution}</p>
-                </div>
-              </div>
-            `).join('')}
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-gradient-to-br from-sky-50 to-cyan-50 rounded-2xl p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-sky-100">
+              <i class="iconoir-code text-4xl text-sky-600 mb-4"></i>
+              <h3 class="text-2xl font-bold mb-3 text-gray-800">SaaS & Tecnologia</h3>
+              <p class="text-gray-600 mb-4">Gestão de trials, onboarding e expansão de contas com métricas MRR e churn</p>
+              <ul class="text-sm text-gray-600 space-y-2">
+                <li><i class="iconoir-check text-sky-600 mr-2"></i>Pipeline de vendas complexo</li>
+                <li><i class="iconoir-check text-sky-600 mr-2"></i>Integração com ferramentas dev</li>
+                <li><i class="iconoir-check text-sky-600 mr-2"></i>Análise de uso e engajamento</li>
+              </ul>
+            </div>
+            <div class="bg-gradient-to-br from-sky-50 to-cyan-50 rounded-2xl p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-sky-100">
+              <i class="iconoir-building text-4xl text-sky-600 mb-4"></i>
+              <h3 class="text-2xl font-bold mb-3 text-gray-800">Imobiliário</h3>
+              <p class="text-gray-600 mb-4">Gestão de leads, visitas, propostas e contratos com portal para corretores</p>
+              <ul class="text-sm text-gray-600 space-y-2">
+                <li><i class="iconoir-check text-sky-600 mr-2"></i>Catálogo de imóveis integrado</li>
+                <li><i class="iconoir-check text-sky-600 mr-2"></i>Agendamento de visitas</li>
+                <li><i class="iconoir-check text-sky-600 mr-2"></i>Controle de comissões</li>
+              </ul>
+            </div>
+            <div class="bg-gradient-to-br from-sky-50 to-cyan-50 rounded-2xl p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-sky-100">
+              <i class="iconoir-book text-4xl text-sky-600 mb-4"></i>
+              <h3 class="text-2xl font-bold mb-3 text-gray-800">Educação</h3>
+              <p class="text-gray-600 mb-4">Captação de alunos, matrículas e relacionamento com pais e responsáveis</p>
+              <ul class="text-sm text-gray-600 space-y-2">
+                <li><i class="iconoir-check text-sky-600 mr-2"></i>Gestão de inscrições</li>
+                <li><i class="iconoir-check text-sky-600 mr-2"></i>Comunicação automatizada</li>
+                <li><i class="iconoir-check text-sky-600 mr-2"></i>Portal do aluno</li>
+              </ul>
+            </div>
+            <div class="bg-gradient-to-br from-sky-50 to-cyan-50 rounded-2xl p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-sky-100">
+              <i class="iconoir-droplet text-4xl text-sky-600 mb-4"></i>
+              <h3 class="text-2xl font-bold mb-3 text-gray-800">Saúde & Bem-estar</h3>
+              <p class="text-gray-600 mb-4">Agendamentos, prontuários e relacionamento com pacientes e convênios</p>
+              <ul class="text-sm text-gray-600 space-y-2">
+                <li><i class="iconoir-check text-sky-600 mr-2"></i>Agenda médica integrada</li>
+                <li><i class="iconoir-check text-sky-600 mr-2"></i>Histórico de atendimentos</li>
+                <li><i class="iconoir-check text-sky-600 mr-2"></i>Lembretes automáticos</li>
+              </ul>
+            </div>
+            <div class="bg-gradient-to-br from-sky-50 to-cyan-50 rounded-2xl p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-sky-100">
+              <i class="iconoir-truck text-4xl text-sky-600 mb-4"></i>
+              <h3 class="text-2xl font-bold mb-3 text-gray-800">Distribuição & Atacado</h3>
+              <p class="text-gray-600 mb-4">Gestão de representantes, pedidos e relacionamento B2B com múltiplos canais</p>
+              <ul class="text-sm text-gray-600 space-y-2">
+                <li><i class="iconoir-check text-sky-600 mr-2"></i>Catálogo de produtos</li>
+                <li><i class="iconoir-check text-sky-600 mr-2"></i>Gestão de territórios</li>
+                <li><i class="iconoir-check text-sky-600 mr-2"></i>Análise de vendas regional</li>
+              </ul>
+            </div>
+            <div class="bg-gradient-to-br from-sky-50 to-cyan-50 rounded-2xl p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-sky-100">
+              <i class="iconoir-briefcase text-4xl text-sky-600 mb-4"></i>
+              <h3 class="text-2xl font-bold mb-3 text-gray-800">Serviços Profissionais</h3>
+              <p class="text-gray-600 mb-4">Propostas comerciais, contratos e gestão de projetos integrada ao CRM</p>
+              <ul class="text-sm text-gray-600 space-y-2">
+                <li><i class="iconoir-check text-sky-600 mr-2"></i>Templates de propostas</li>
+                <li><i class="iconoir-check text-sky-600 mr-2"></i>Time tracking integrado</li>
+                <li><i class="iconoir-check text-sky-600 mr-2"></i>Faturamento recorrente</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
-    `;
-  }
 
-  private createPricing(): string {
-    return `
-      <section id="pricing" class="py-20 gradient-bg text-white">
+      <section id="testimonials" class="py-20 bg-gradient-to-br from-sky-50 to-cyan-50">
         <div class="container mx-auto px-6">
           <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4">Planos Transparentes</h2>
-            <p class="text-xl text-gray-100">
-              Escolha o plano ideal para o tamanho da sua equipe
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-sky-600 to-cyan-600 bg-clip-text text-transparent">O Que Dizem Nossos Clientes</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+              Empresas reais, resultados reais com Frappe CRM e suporte Avila Ops
+            </p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white rounded-2xl p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+              <div class="flex items-center mb-4">
+                <i class="iconoir-star-solid text-2xl text-yellow-400"></i>
+                <i class="iconoir-star-solid text-2xl text-yellow-400"></i>
+                <i class="iconoir-star-solid text-2xl text-yellow-400"></i>
+                <i class="iconoir-star-solid text-2xl text-yellow-400"></i>
+                <i class="iconoir-star-solid text-2xl text-yellow-400"></i>
+              </div>
+              <p class="text-gray-600 mb-6 italic">"Dobramos nossa taxa de conversão em 3 meses. A automação do Frappe CRM nos permitiu focar no que importa: relacionamento com clientes. O suporte da Avila Ops foi essencial nessa transformação."</p>
+              <div class="flex items-center">
+                <div class="bg-sky-100 rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                  <i class="iconoir-user text-sky-600 text-2xl"></i>
+                </div>
+                <div>
+                  <p class="font-bold text-gray-800">Carlos Mendes</p>
+                  <p class="text-sm text-gray-500">Diretor Comercial, TechSolutions</p>
+                </div>
+              </div>
+            </div>
+            <div class="bg-white rounded-2xl p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+              <div class="flex items-center mb-4">
+                <i class="iconoir-star-solid text-2xl text-yellow-400"></i>
+                <i class="iconoir-star-solid text-2xl text-yellow-400"></i>
+                <i class="iconoir-star-solid text-2xl text-yellow-400"></i>
+                <i class="iconoir-star-solid text-2xl text-yellow-400"></i>
+                <i class="iconoir-star-solid text-2xl text-yellow-400"></i>
+              </div>
+              <p class="text-gray-600 mb-6 italic">"Migramos de um CRM caro e complexo para o Frappe CRM. Economizamos 75% nos custos e ganhamos muito mais flexibilidade. A equipe da Avila Ops entregou tudo no prazo prometido."</p>
+              <div class="flex items-center">
+                <div class="bg-sky-100 rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                  <i class="iconoir-user text-sky-600 text-2xl"></i>
+                </div>
+                <div>
+                  <p class="font-bold text-gray-800">Mariana Silva</p>
+                  <p class="text-sm text-gray-500">CEO, Imobiliária Horizonte</p>
+                </div>
+              </div>
+            </div>
+            <div class="bg-white rounded-2xl p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+              <div class="flex items-center mb-4">
+                <i class="iconoir-star-solid text-2xl text-yellow-400"></i>
+                <i class="iconoir-star-solid text-2xl text-yellow-400"></i>
+                <i class="iconoir-star-solid text-2xl text-yellow-400"></i>
+                <i class="iconoir-star-solid text-2xl text-yellow-400"></i>
+                <i class="iconoir-star-solid text-2xl text-yellow-400"></i>
+              </div>
+              <p class="text-gray-600 mb-6 italic">"O pipeline visual e as automações mudaram a forma como trabalhamos. Conseguimos triplicar o número de leads qualificados sem aumentar a equipe. Suporte da Avila Ops é impecável!"</p>
+              <div class="flex items-center">
+                <div class="bg-sky-100 rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                  <i class="iconoir-user text-sky-600 text-2xl"></i>
+                </div>
+                <div>
+                  <p class="font-bold text-gray-800">Roberto Alves</p>
+                  <p class="text-sm text-gray-500">Gerente de Vendas, EduTech</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-sky-600 to-cyan-600 bg-clip-text text-transparent">Planos que Cabem no Seu Orçamento</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+              Implantação completa, treinamento e suporte inclusos em todos os planos
             </p>
           </div>
           <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
-              <h3 class="text-2xl font-bold mb-2">Starter</h3>
+            <div class="bg-gradient-to-br from-gray-50 to-sky-50 rounded-2xl p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-sky-100">
+              <h3 class="text-2xl font-bold mb-2 text-gray-800">Starter</h3>
+              <p class="text-gray-600 mb-6">Ideal para equipes de até 5 usuários</p>
               <div class="mb-6">
-                <span class="text-5xl font-bold">€149</span>
-                <span class="text-gray-200">/mês</span>
+                <span class="text-5xl font-bold bg-gradient-to-r from-sky-600 to-cyan-600 bg-clip-text text-transparent">R$ 749</span>
+                <span class="text-gray-600">/mês</span>
               </div>
               <ul class="space-y-3 mb-8">
                 <li class="flex items-start">
-                  <svg class="w-5 h-5 text-green-400 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                  </svg>
-                  <span>Até 3 usuários</span>
+                  <i class="iconoir-check text-sky-600 text-xl mr-2 mt-1"></i>
+                  <span class="text-gray-700">Até 5 usuários ativos</span>
                 </li>
                 <li class="flex items-start">
-                  <svg class="w-5 h-5 text-green-400 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                  </svg>
-                  <span>1000 leads/mês</span>
+                  <i class="iconoir-check text-sky-600 text-xl mr-2 mt-1"></i>
+                  <span class="text-gray-700">Pipeline visual completo</span>
                 </li>
                 <li class="flex items-start">
-                  <svg class="w-5 h-5 text-green-400 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                  </svg>
-                  <span>Email integrado</span>
+                  <i class="iconoir-check text-sky-600 text-xl mr-2 mt-1"></i>
+                  <span class="text-gray-700">Automações básicas</span>
                 </li>
                 <li class="flex items-start">
-                  <svg class="w-5 h-5 text-green-400 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                  </svg>
-                  <span>Suporte via email</span>
+                  <i class="iconoir-check text-sky-600 text-xl mr-2 mt-1"></i>
+                  <span class="text-gray-700">Email integrado</span>
                 </li>
                 <li class="flex items-start">
-                  <svg class="w-5 h-5 text-green-400 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                  </svg>
-                  <span>Backup diário</span>
+                  <i class="iconoir-check text-sky-600 text-xl mr-2 mt-1"></i>
+                  <span class="text-gray-700">Relatórios básicos</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="iconoir-check text-sky-600 text-xl mr-2 mt-1"></i>
+                  <span class="text-gray-700">Suporte via email (horário comercial)</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="iconoir-check text-sky-600 text-xl mr-2 mt-1"></i>
+                  <span class="text-gray-700">Backup diário</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="iconoir-check text-sky-600 text-xl mr-2 mt-1"></i>
+                  <span class="text-gray-700">Treinamento inicial (4h)</span>
                 </li>
               </ul>
-              <button class="w-full bg-white text-green-600 py-3 rounded-full font-bold hover:shadow-lg transition">
-                Começar Agora
-              </button>
+              <a href="https://mpago.la/1M9dKRK" target="_blank" class="block w-full bg-gradient-to-r from-sky-600 to-cyan-600 text-white py-4 rounded-full font-bold text-center hover:shadow-lg transition transform hover:scale-105">
+                Assinar Agora
+              </a>
             </div>
 
-            <div class="bg-white/20 backdrop-blur-lg rounded-3xl p-8 border-2 border-yellow-400 relative transform scale-105">
-              <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-green-900 px-6 py-1 rounded-full text-sm font-bold">
+            <div class="bg-gradient-to-br from-sky-600 to-cyan-600 rounded-2xl p-8 relative transform scale-105 shadow-2xl text-white">
+              <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-orange-500 text-white px-6 py-2 rounded-full text-sm font-bold">
                 Mais Popular
               </div>
               <h3 class="text-2xl font-bold mb-2">Professional</h3>
+              <p class="text-sky-100 mb-6">Ideal para equipes de até 15 usuários</p>
               <div class="mb-6">
-                <span class="text-5xl font-bold">€399</span>
-                <span class="text-gray-200">/mês</span>
+                <span class="text-5xl font-bold">R$ 1.999</span>
+                <span class="text-sky-100">/mês</span>
               </div>
               <ul class="space-y-3 mb-8">
                 <li class="flex items-start">
-                  <svg class="w-5 h-5 text-green-400 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                  </svg>
-                  <span>Até 10 usuários</span>
+                  <i class="iconoir-check text-white text-xl mr-2 mt-1"></i>
+                  <span>Até 15 usuários ativos</span>
                 </li>
                 <li class="flex items-start">
-                  <svg class="w-5 h-5 text-green-400 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                  </svg>
-                  <span>Leads ilimitados</span>
+                  <i class="iconoir-check text-white text-xl mr-2 mt-1"></i>
+                  <span>Tudo do plano Starter</span>
                 </li>
                 <li class="flex items-start">
-                  <svg class="w-5 h-5 text-green-400 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                  </svg>
-                  <span>Automações avançadas</span>
+                  <i class="iconoir-check text-white text-xl mr-2 mt-1"></i>
+                  <span>Automações avançadas ilimitadas</span>
                 </li>
                 <li class="flex items-start">
-                  <svg class="w-5 h-5 text-green-400 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                  </svg>
-                  <span>Suporte prioritário 24/7</span>
+                  <i class="iconoir-check text-white text-xl mr-2 mt-1"></i>
+                  <span>WhatsApp Business integrado</span>
                 </li>
                 <li class="flex items-start">
-                  <svg class="w-5 h-5 text-green-400 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                  </svg>
-                  <span>Customizações incluídas</span>
+                  <i class="iconoir-check text-white text-xl mr-2 mt-1"></i>
+                  <span>Dashboards personalizados</span>
                 </li>
                 <li class="flex items-start">
-                  <svg class="w-5 h-5 text-green-400 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                  </svg>
-                  <span>App mobile nativo</span>
+                  <i class="iconoir-check text-white text-xl mr-2 mt-1"></i>
+                  <span>API e integrações customizadas</span>
                 </li>
                 <li class="flex items-start">
-                  <svg class="w-5 h-5 text-green-400 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                  </svg>
-                  <span>Integração com ERPNext</span>
+                  <i class="iconoir-check text-white text-xl mr-2 mt-1"></i>
+                  <span>Suporte 24/7 (chat e email)</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="iconoir-check text-white text-xl mr-2 mt-1"></i>
+                  <span>Backup em tempo real</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="iconoir-check text-white text-xl mr-2 mt-1"></i>
+                  <span>Treinamento completo (12h)</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="iconoir-check text-white text-xl mr-2 mt-1"></i>
+                  <span>SLA garantido 99.9%</span>
                 </li>
               </ul>
-              <button class="w-full bg-yellow-400 text-green-900 py-3 rounded-full font-bold hover:shadow-lg transition">
-                Escolher Plano
-              </button>
+              <a href="https://mpago.la/1M9dKRK" target="_blank" class="block w-full bg-white text-sky-600 py-4 rounded-full font-bold text-center hover:shadow-lg transition transform hover:scale-105">
+                Assinar Agora
+              </a>
             </div>
 
-            <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
-              <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
+            <div class="bg-gradient-to-br from-gray-50 to-sky-50 rounded-2xl p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-sky-100">
+              <h3 class="text-2xl font-bold mb-2 text-gray-800">Enterprise</h3>
+              <p class="text-gray-600 mb-6">Para grandes equipes e necessidades complexas</p>
               <div class="mb-6">
-                <span class="text-5xl font-bold">€899</span>
-                <span class="text-gray-200">/mês</span>
+                <span class="text-5xl font-bold bg-gradient-to-r from-sky-600 to-cyan-600 bg-clip-text text-transparent">R$ 4.499</span>
+                <span class="text-gray-600">/mês</span>
               </div>
               <ul class="space-y-3 mb-8">
                 <li class="flex items-start">
-                  <svg class="w-5 h-5 text-green-400 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                  </svg>
-                  <span>Usuários ilimitados</span>
+                  <i class="iconoir-check text-sky-600 text-xl mr-2 mt-1"></i>
+                  <span class="text-gray-700">Usuários ilimitados</span>
                 </li>
                 <li class="flex items-start">
-                  <svg class="w-5 h-5 text-green-400 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                  </svg>
-                  <span>Tudo do Professional</span>
+                  <i class="iconoir-check text-sky-600 text-xl mr-2 mt-1"></i>
+                  <span class="text-gray-700">Tudo do plano Professional</span>
                 </li>
                 <li class="flex items-start">
-                  <svg class="w-5 h-5 text-green-400 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                  </svg>
-                  <span>Gerente dedicado</span>
+                  <i class="iconoir-check text-sky-600 text-xl mr-2 mt-1"></i>
+                  <span class="text-gray-700">Gerente de conta dedicado</span>
                 </li>
                 <li class="flex items-start">
-                  <svg class="w-5 h-5 text-green-400 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                  </svg>
-                  <span>Infraestrutura dedicada</span>
+                  <i class="iconoir-check text-sky-600 text-xl mr-2 mt-1"></i>
+                  <span class="text-gray-700">Desenvolvimento de features customizadas</span>
                 </li>
                 <li class="flex items-start">
-                  <svg class="w-5 h-5 text-green-400 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                  </svg>
-                  <span>SLA personalizado</span>
+                  <i class="iconoir-check text-sky-600 text-xl mr-2 mt-1"></i>
+                  <span class="text-gray-700">Integrações complexas (ERP, sistemas legados)</span>
                 </li>
                 <li class="flex items-start">
-                  <svg class="w-5 h-5 text-green-400 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                  </svg>
-                  <span>Treinamento ilimitado</span>
+                  <i class="iconoir-check text-sky-600 text-xl mr-2 mt-1"></i>
+                  <span class="text-gray-700">Infraestrutura dedicada</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="iconoir-check text-sky-600 text-xl mr-2 mt-1"></i>
+                  <span class="text-gray-700">Suporte prioritário 24/7/365</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="iconoir-check text-sky-600 text-xl mr-2 mt-1"></i>
+                  <span class="text-gray-700">Treinamento ilimitado</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="iconoir-check text-sky-600 text-xl mr-2 mt-1"></i>
+                  <span class="text-gray-700">Consultoria estratégica</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="iconoir-check text-sky-600 text-xl mr-2 mt-1"></i>
+                  <span class="text-gray-700">SLA 99.99%</span>
                 </li>
               </ul>
-              <button class="w-full bg-white text-green-600 py-3 rounded-full font-bold hover:shadow-lg transition">
+              <a href="https://wa.me/5517997811471?text=Quero%20o%20plano%20Enterprise%20do%20Frappe%20CRM" target="_blank" class="block w-full bg-gradient-to-r from-sky-600 to-cyan-600 text-white py-4 rounded-full font-bold text-center hover:shadow-lg transition transform hover:scale-105">
                 Falar com Vendas
-              </button>
+              </a>
             </div>
           </div>
-          <p class="text-center mt-12 text-gray-100">
-            ✨ Todos os planos incluem implantação completa, migração de dados e 30 dias de garantia
+          <p class="text-center mt-8 text-gray-600">
+            <i class="iconoir-info-circle mr-2"></i>Todos os planos incluem implantação completa e migração de dados
           </p>
         </div>
       </section>
-    `;
-  }
 
-  private createCTA(): string {
-    return `
-      <section class="py-20 bg-white">
+      <section class="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
         <div class="container mx-auto px-6">
           <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Comece a Vender Mais Hoje</h2>
-            <p class="text-xl text-gray-600 mb-8">
-              Teste o Frappe CRM gratuitamente por 14 dias. Sem cartão de crédito. Sem compromisso.
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Pronto para Aumentar suas Vendas?</h2>
+            <p class="text-xl text-gray-300 mb-8">
+              Agende uma demonstração gratuita e veja o Frappe CRM em ação
             </p>
-            <form class="max-w-md mx-auto space-y-4">
-              <input type="text" placeholder="Nome completo" class="w-full px-6 py-4 rounded-full border-2 border-gray-200 focus:border-green-500 outline-none transition">
-              <input type="email" placeholder="Email de trabalho" class="w-full px-6 py-4 rounded-full border-2 border-gray-200 focus:border-green-500 outline-none transition">
-              <input type="text" placeholder="Nome da empresa" class="w-full px-6 py-4 rounded-full border-2 border-gray-200 focus:border-green-500 outline-none transition">
-              <input type="tel" placeholder="Telefone (WhatsApp)" class="w-full px-6 py-4 rounded-full border-2 border-gray-200 focus:border-green-500 outline-none transition">
-              <button type="submit" class="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white px-8 py-4 rounded-full font-bold hover:shadow-2xl transition transform hover:scale-105">
-                🚀 Começar Teste Gratuito de 14 Dias
+            <form class="max-w-md mx-auto space-y-4" onsubmit="event.preventDefault(); window.open('https://wa.me/5517997811471?text=' + encodeURIComponent('Olá! Gostaria de uma demonstração do Frappe CRM'), '_blank');">
+              <input type="text" placeholder="Seu nome" class="w-full px-6 py-4 rounded-full border-2 border-gray-700 bg-gray-800 text-white focus:border-sky-500 outline-none transition">
+              <input type="email" placeholder="Seu email corporativo" class="w-full px-6 py-4 rounded-full border-2 border-gray-700 bg-gray-800 text-white focus:border-sky-500 outline-none transition">
+              <input type="tel" placeholder="Telefone / WhatsApp" class="w-full px-6 py-4 rounded-full border-2 border-gray-700 bg-gray-800 text-white focus:border-sky-500 outline-none transition">
+              <select class="w-full px-6 py-4 rounded-full border-2 border-gray-700 bg-gray-800 text-white focus:border-sky-500 outline-none transition">
+                <option>Tamanho da equipe de vendas</option>
+                <option>1-5 pessoas</option>
+                <option>6-15 pessoas</option>
+                <option>16-50 pessoas</option>
+                <option>50+ pessoas</option>
+              </select>
+              <button type="submit" class="w-full bg-gradient-to-r from-sky-600 to-cyan-600 text-white px-8 py-4 rounded-full font-bold hover:shadow-2xl transition transform hover:scale-105">
+                <i class="iconoir-send mr-2"></i>Agendar Demonstração Gratuita
               </button>
             </form>
-            <div class="mt-8 flex items-center justify-center space-x-8 text-sm text-gray-500">
-              <div class="flex items-center">
-                <svg class="w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-                <span>Setup em 1 hora</span>
-              </div>
-              <div class="flex items-center">
-                <svg class="w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-                <span>Cancele quando quiser</span>
-              </div>
-              <div class="flex items-center">
-                <svg class="w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-                <span>Suporte em PT-BR</span>
-              </div>
+            <p class="mt-6 text-sm text-gray-400">
+              <i class="iconoir-lock mr-2"></i>Seus dados estão seguros. Não compartilhamos informações com terceiros.
+            </p>
+            <div class="mt-8">
+              <a href="https://wa.me/5517997811471?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Frappe%20CRM" target="_blank" class="inline-flex items-center text-sky-400 hover:text-sky-300 font-semibold text-lg">
+                <i class="iconoir-chat-bubble text-2xl mr-2"></i>
+                Fale conosco pelo WhatsApp: +55 (17) 99781-1471
+              </a>
             </div>
           </div>
         </div>
       </section>
-    `;
-  }
 
-  private createTestimonials(): string {
-    return `
-      <section class="py-20 bg-gradient-to-br from-green-50 to-emerald-50">
-        <div class="container mx-auto px-6">
-          <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">O que nossos clientes dizem</h2>
-          </div>
-          <div class="grid md:grid-cols-3 gap-8">
-            <div class="bg-white rounded-2xl p-8 shadow-lg">
-              <div class="flex items-center mb-4">
-                ${[...Array(5)].map(() => `
-                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                  </svg>
-                `).join('')}
-              </div>
-              <p class="text-gray-600 mb-4">"Aumentamos nossas vendas em 80% nos primeiros 6 meses. A equipe da Avila Ops foi impecável na implantação."</p>
-              <div class="font-bold text-gray-800">João Silva</div>
-              <div class="text-sm text-gray-500">CEO, TechCorp</div>
-            </div>
-            <div class="bg-white rounded-2xl p-8 shadow-lg">
-              <div class="flex items-center mb-4">
-                ${[...Array(5)].map(() => `
-                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                  </svg>
-                `).join('')}
-              </div>
-              <p class="text-gray-600 mb-4">"Interface super intuitiva. Minha equipe aprendeu em poucos dias e a adoção foi de 100%."</p>
-              <div class="font-bold text-gray-800">Maria Santos</div>
-              <div class="text-sm text-gray-500">Diretora Comercial, SalesHub</div>
-            </div>
-            <div class="bg-white rounded-2xl p-8 shadow-lg">
-              <div class="flex items-center mb-4">
-                ${[...Array(5)].map(() => `
-                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                  </svg>
-                `).join('')}
-              </div>
-              <p class="text-gray-600 mb-4">"O melhor custo-benefício do mercado. Pagávamos 3x mais no CRM anterior e temos muito mais recursos agora."</p>
-              <div class="font-bold text-gray-800">Pedro Costa</div>
-              <div class="text-sm text-gray-500">Fundador, StartupXYZ</div>
-            </div>
-          </div>
-        </div>
-      </section>
-    `;
-  }
-
-  private createFooter(): string {
-    return `
       <footer class="bg-gray-900 text-white py-12">
         <div class="container mx-auto px-6">
           <div class="grid md:grid-cols-4 gap-8">
             <div>
-              <h4 class="text-xl font-bold mb-4 gradient-text">Avila Ops</h4>
-              <p class="text-gray-400">Parceiro oficial Frappe para implantação de CRM e ERPNext</p>
+              <div class="flex items-center space-x-2 mb-4">
+                <i class="iconoir-user-circle text-3xl text-sky-400"></i>
+                <h4 class="text-xl font-bold bg-gradient-to-r from-sky-400 to-cyan-400 bg-clip-text text-transparent">Avila Ops CRM</h4>
+              </div>
+              <p class="text-gray-400">Especialistas em Frappe CRM e soluções de relacionamento com clientes</p>
+              <div class="mt-4 flex space-x-4">
+                <a href="https://instagram.com/avilaopss" target="_blank" class="text-gray-400 hover:text-sky-400 transition">
+                  <i class="iconoir-instagram text-2xl"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/avilaops" target="_blank" class="text-gray-400 hover:text-sky-400 transition">
+                  <i class="iconoir-linkedin text-2xl"></i>
+                </a>
+              </div>
             </div>
             <div>
               <h4 class="font-bold mb-4">Produtos</h4>
               <ul class="space-y-2 text-gray-400">
                 <li><a href="https://crm.avilaops.com" class="hover:text-white transition">Frappe CRM</a></li>
                 <li><a href="https://erp.avilaops.com" class="hover:text-white transition">ERPNext</a></li>
-                <li><a href="#" class="hover:text-white transition">Integrações</a></li>
               </ul>
             </div>
             <div>
-              <h4 class="font-bold mb-4">Recursos</h4>
+              <h4 class="font-bold mb-4">Empresa</h4>
               <ul class="space-y-2 text-gray-400">
-                <li><a href="#" class="hover:text-white transition">Documentação</a></li>
-                <li><a href="#" class="hover:text-white transition">Academy</a></li>
-                <li><a href="#" class="hover:text-white transition">Blog</a></li>
-                <li><a href="#" class="hover:text-white transition">Casos de Sucesso</a></li>
+                <li><a href="https://avilaops.com/sobre-nos/" class="hover:text-white transition">Sobre</a></li>
+                <li><a href="https://avilaops.com/portfolio/" class="hover:text-white transition">Portfólio</a></li>
+                <li><a href="https://avilaops.com/blog/" class="hover:text-white transition">Blog</a></li>
               </ul>
             </div>
             <div>
               <h4 class="font-bold mb-4">Contato</h4>
               <ul class="space-y-2 text-gray-400">
-                <li>📧 vendas@avilaops.com</li>
-                <li>📱 +351 xxx xxx xxx</li>
-                <li>💬 WhatsApp Business</li>
-                <li>🌐 www.avilaops.com</li>
+                <li><i class="iconoir-mail mr-2"></i>atendimento@avilaops.com</li>
+                <li><i class="iconoir-phone mr-2"></i>+55 (17) 99781-1471</li>
+                <li><i class="iconoir-internet mr-2"></i>www.avilaops.com</li>
               </ul>
             </div>
           </div>
           <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2026 Avila Ops. Todos os direitos reservados. | Parceiro Oficial Frappe</p>
+            <p>&copy; 2026 Avila Ops. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>
     `;
-  }
 
-  private render(): void {
-    this.app.innerHTML = `
-      ${this.createHeader()}
-      ${this.createHero()}
-      ${this.createFeatures()}
-      ${this.createBenefits()}
-      ${this.createUseCases()}
-      ${this.createTestimonials()}
-      ${this.createPricing()}
-      ${this.createCTA()}
-      ${this.createFooter()}
-    `;
-
-    // Add smooth scroll behavior
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', (e) => {
         e.preventDefault();
         const target = document.querySelector((anchor as HTMLAnchorElement).getAttribute('href')!);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
-
-    // Form submission handlers
-    document.querySelectorAll('form').forEach(form => {
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('🎉 Ótimo! Seu teste gratuito está sendo preparado. Entraremos em contato em breve!');
-        form.reset();
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
   }
 }
 
-// Initialize the landing page
 new CRMLandingPage();

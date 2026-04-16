@@ -2,32 +2,690 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================
+   BASE STYLES & RESET
+   ============================================ */
 @layer base {
+  * {
+    @apply box-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
   body {
-    @apply bg-gray-50 text-gray-900;
+    @apply bg-gray-50 text-gray-900 antialiased;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Prevent layout shift */
+  img, video {
+    @apply max-w-full h-auto;
   }
 }
 
+/* ============================================
+   AVILA OPS BRANDING - SKY/CYAN GRADIENTS
+   ============================================ */
 @layer components {
-  .gradient-bg {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  /* Primary brand gradient (sky-600 to cyan-600) */
+  .gradient-brand {
+    background: linear-gradient(135deg, #0284c7 0%, #0891b2 100%);
   }
-  
+
+  .gradient-brand-hover {
+    background: linear-gradient(135deg, #0369a1 0%, #0e7490 100%);
+  }
+
+  /* Text gradients */
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-emerald-600;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-sky-600 to-cyan-600;
+  }
+
+  .gradient-text-light {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-cyan-400;
+  }
+
+  /* Background gradients */
+  .gradient-bg-light {
+    @apply bg-gradient-to-br from-sky-50 to-cyan-50;
+  }
+
+  .gradient-bg-dark {
+    @apply bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900;
+  }
+
+  /* Border gradients */
+  .border-gradient {
+    border-image: linear-gradient(135deg, #0284c7, #0891b2) 1;
+  }
+
+  /* Card with gradient border */
+  .card-gradient-border {
+    @apply relative bg-white rounded-2xl p-8;
   }
   
-  .card-hover {
-    @apply transition-all duration-300 hover:shadow-2xl hover:-translate-y-2;
+  .card-gradient-border::before {
+    content: '';
+    @apply absolute inset-0 rounded-2xl p-[2px] bg-gradient-to-r from-sky-600 to-cyan-600;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
   }
-  
-  .pulse-ring {
-    animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ============================================
+   ANIMATIONS & KEYFRAMES
+   ============================================ */
+@layer utilities {
+  /* Fade in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-  
-  @keyframes pulse-ring {
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  /* Slide up animation */
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  /* Scale in animation */
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  /* Pulse animation */
+  @keyframes pulse {
     0%, 100% {
       opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  /* Shimmer effect */
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  /* Floating animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Gradient animation */
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradientShift 4s ease infinite;
+  }
+}
+
+/* ============================================
+   CARD & COMPONENT STYLES
+   ============================================ */
+@layer components {
+  /* Base card */
+  .card {
+    @apply bg-white rounded-2xl p-8 shadow-sm;
+  }
+
+  /* Card with hover effect */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-2xl hover:-translate-y-2;
+    will-change: transform, box-shadow;
+  }
+
+  /* Card with gradient background */
+  .card-gradient {
+    @apply bg-gradient-to-br from-sky-50 to-cyan-50 rounded-2xl p-8 border border-sky-100;
+    @apply transition-all duration-300 hover:shadow-2xl hover:-translate-y-2;
+  }
+
+  /* Glass card effect */
+  .card-glass {
+    @apply bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20;
+    @apply transition-all duration-300 hover:bg-white/20;
+  }
+
+  /* Feature card */
+  .feature-card {
+    @apply card-gradient;
+    @apply hover:shadow-2xl hover:-translate-y-2;
+    @apply transition-all duration-300;
+    will-change: transform;
+  }
+}
+
+/* ============================================
+   ICONOIR ICON STYLES
+   ============================================ */
+@layer components {
+  /* Base icon styles */
+  [class*='iconoir-'] {
+    @apply inline-block;
+    line-height: 1;
+    vertical-align: middle;
+  }
+
+  /* Icon sizes */
+  .icon-sm {
+    @apply text-xl;
+  }
+
+  .icon-md {
+    @apply text-3xl;
+  }
+
+  .icon-lg {
+    @apply text-5xl;
+  }
+
+  .icon-xl {
+    @apply text-6xl;
+  }
+
+  /* Icon with gradient */
+  .icon-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-sky-600 to-cyan-600;
+  }
+
+  /* Animated icon */
+  .icon-animated {
+    @apply transition-transform duration-300;
+  }
+
+  .icon-animated:hover {
+    @apply scale-110 rotate-6;
+  }
+
+  /* Icon in circle */
+  .icon-circle {
+    @apply inline-flex items-center justify-center w-12 h-12 rounded-full;
+    @apply bg-gradient-to-br from-sky-100 to-cyan-100 text-sky-600;
+  }
+
+  .icon-circle-lg {
+    @apply inline-flex items-center justify-center w-16 h-16 rounded-full;
+    @apply bg-gradient-to-br from-sky-100 to-cyan-100 text-sky-600;
+  }
+}
+
+/* ============================================
+   BUTTON STYLES
+   ============================================ */
+@layer components {
+  /* Primary button */
+  .btn-primary {
+    @apply bg-gradient-to-r from-sky-600 to-cyan-600 text-white;
+    @apply px-8 py-4 rounded-full font-semibold;
+    @apply hover:shadow-2xl transition-all duration-300;
+    @apply transform hover:scale-105;
+    will-change: transform, box-shadow;
+  }
+
+  .btn-primary:active {
+    @apply scale-100;
+  }
+
+  /* Secondary button */
+  .btn-secondary {
+    @apply border-2 border-sky-400 text-sky-400;
+    @apply px-8 py-4 rounded-full font-semibold;
+    @apply hover:bg-sky-400 hover:text-white;
+    @apply transition-all duration-300;
+  }
+
+  /* Ghost button */
+  .btn-ghost {
+    @apply text-sky-600 hover:text-sky-700;
+    @apply px-6 py-3 rounded-full font-semibold;
+    @apply hover:bg-sky-50 transition-all duration-300;
+  }
+
+  /* Button with icon */
+  .btn-icon {
+    @apply inline-flex items-center gap-2;
+  }
+}
+
+/* ============================================
+   FORM STYLES
+   ============================================ */
+@layer components {
+  /* Input fields */
+  .input {
+    @apply w-full px-6 py-4 rounded-full;
+    @apply border-2 border-gray-200;
+    @apply focus:border-sky-500 focus:outline-none;
+    @apply transition-all duration-300;
+  }
+
+  .input:focus {
+    @apply ring-4 ring-sky-100;
+  }
+
+  /* Select dropdown */
+  .select {
+    @apply input;
+    @apply appearance-none bg-white;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%230284c7'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1.5rem center;
+    background-size: 1.5em 1.5em;
+    padding-right: 3.5rem;
+  }
+
+  /* Textarea */
+  .textarea {
+    @apply w-full px-6 py-4 rounded-3xl;
+    @apply border-2 border-gray-200;
+    @apply focus:border-sky-500 focus:outline-none;
+    @apply transition-all duration-300 resize-none;
+  }
+
+  .textarea:focus {
+    @apply ring-4 ring-sky-100;
+  }
+}
+
+/* ============================================
+   NAVIGATION STYLES
+   ============================================ */
+@layer components {
+  /* Fixed header with blur */
+  .header-blur {
+    @apply fixed top-0 left-0 right-0;
+    @apply bg-white/95 backdrop-blur-sm shadow-sm z-50;
+  }
+
+  /* Navigation link */
+  .nav-link {
+    @apply text-gray-700 hover:text-sky-600;
+    @apply transition-colors duration-300;
+    @apply relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5;
+    @apply bg-gradient-to-r from-sky-600 to-cyan-600;
+    @apply transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+}
+
+/* ============================================
+   SECTION STYLES
+   ============================================ */
+@layer components {
+  /* Hero section with pattern */
+  .hero-pattern {
+    @apply relative overflow-hidden;
+  }
+
+  .hero-pattern::before {
+    content: '';
+    @apply absolute inset-0 opacity-10;
+    background-image: radial-gradient(#444 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+
+  /* Section container */
+  .section {
+    @apply py-20;
+  }
+
+  .section-lg {
+    @apply py-32;
+  }
+
+  /* Section title */
+  .section-title {
+    @apply text-4xl md:text-5xl font-bold mb-4;
+    @apply bg-gradient-to-r from-sky-600 to-cyan-600 bg-clip-text text-transparent;
+  }
+
+  .section-subtitle {
+    @apply text-xl text-gray-600 max-w-3xl mx-auto;
+  }
+}
+
+/* ============================================
+   BADGE & TAG STYLES
+   ============================================ */
+@layer components {
+  /* Badge */
+  .badge {
+    @apply inline-block bg-sky-500/20 px-4 py-2 rounded-full;
+    @apply border border-sky-500/30;
+  }
+
+  .badge-text {
+    @apply text-sm font-semibold text-sky-400;
+  }
+
+  /* Tag */
+  .tag {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full;
+    @apply bg-sky-100 text-sky-700;
+    @apply text-sm font-medium;
+  }
+}
+
+/* ============================================
+   DARK MODE SUPPORT
+   ============================================ */
+@layer components {
+  /* Dark mode hero section */
+  .hero-dark {
+    @apply bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white;
+  }
+
+  .hero-dark .section-title {
+    @apply bg-gradient-to-r from-sky-400 to-cyan-400 bg-clip-text text-transparent;
+  }
+
+  .hero-dark .text-content {
+    @apply text-gray-300;
+  }
+
+  .hero-dark .card-glass {
+    @apply bg-sky-500/20 backdrop-blur-lg border-sky-500/30;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+@layer utilities {
+  /* Text shadows */
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Smooth transitions */
+  .transition-smooth {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .transition-fast {
+    @apply transition-all duration-150 ease-in-out;
+  }
+
+  .transition-slow {
+    @apply transition-all duration-500 ease-in-out;
+  }
+
+  /* Backdrop blur levels */
+  .backdrop-blur-xs {
+    backdrop-filter: blur(2px);
+  }
+
+  .backdrop-blur-3xl {
+    backdrop-filter: blur(32px);
+  }
+
+  /* Custom scrollbar */
+  .scrollbar-custom::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-track {
+    @apply bg-gray-100 rounded-full;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    @apply bg-gradient-to-b from-sky-600 to-cyan-600 rounded-full;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    @apply bg-gradient-to-b from-sky-700 to-cyan-700;
+  }
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+@layer utilities {
+  /* GPU acceleration for transforms */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* Optimize animations */
+  .optimize-animation {
+    will-change: transform, opacity;
+  }
+
+  /* Remove will-change after animation */
+  .optimize-animation:not(:hover):not(:focus) {
+    will-change: auto;
+  }
+}
+
+/* ============================================
+   RESPONSIVE UTILITIES
+   ============================================ */
+@layer utilities {
+  /* Hide on mobile */
+  @media (max-width: 768px) {
+    .hide-mobile {
+      @apply hidden;
+    }
+  }
+
+  /* Hide on desktop */
+  @media (min-width: 769px) {
+    .hide-desktop {
+      @apply hidden;
+    }
+  }
+
+  /* Responsive text sizes */
+  .text-responsive-sm {
+    @apply text-base md:text-lg lg:text-xl;
+  }
+
+  .text-responsive-md {
+    @apply text-xl md:text-2xl lg:text-3xl;
+  }
+
+  .text-responsive-lg {
+    @apply text-2xl md:text-3xl lg:text-4xl;
+  }
+
+  .text-responsive-xl {
+    @apply text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    @apply bg-white text-black;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY IMPROVEMENTS
+   ============================================ */
+@layer base {
+  /* Focus visible for keyboard navigation */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-sky-500;
+  }
+
+  /* Reduced motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .gradient-text {
+      @apply text-sky-700;
+      background: none;
+    }
+  }
+}
+
+/* ============================================
+   CUSTOM PROPERTIES (CSS Variables)
+   ============================================ */
+:root {
+  /* Brand colors */
+  --color-brand-sky: #0284c7;
+  --color-brand-cyan: #0891b2;
+  
+  /* Spacing */
+  --spacing-section: 5rem;
+  --spacing-container: 1.5rem;
+  
+  /* Border radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 300ms ease-in-out;
+  --transition-slow: 500ms ease-in-out;
+}
+
+/* ============================================
+   LOADING STATES
+   ============================================ */
+@layer components {
+  /* Skeleton loader */
+  .skeleton {
+    @apply bg-gray-200 animate-pulse rounded;
+  }
+
+  /* Spinner */
+  .spinner {
+    @apply inline-block w-8 h-8 border-4 border-sky-200 border-t-sky-600 rounded-full;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
     }
     50% {
       opacity: 0.5;
